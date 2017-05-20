@@ -29,6 +29,9 @@ The component will be wrapped in a div with this class.
 ## `data`
 Object with any additional data that will be sent along with the files to the endpoint.
 
+## `headers`
+Object with any additional headers that will be sent in the request to the endpoint.
+
 ## `dropzoneActiveStyle`
 Style used when user hovers over the dropzone.
 

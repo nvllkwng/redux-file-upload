@@ -37,10 +37,11 @@ function getImageThumbnail(imageFile) {
   });
 }
 
-function uploadFile(dispatch, url, identificator, file, data) {
+function uploadFile(dispatch, url, identificator, file, data, headers) {
   return new Promise(resolve => {
     FileAPI.upload({
       data,
+      headers,
       files: {
         file
       },
@@ -78,12 +79,12 @@ export function addUploadingDocs(identificator, docFiles) {
   };
 }
 
-export function uploadFiles(identificator, url, files, type, data, concurrency = 2) {
+export function uploadFiles(identificator, url, files, type, data, headers, concurrency = 2) {
   return params => {
     const dispatch = typeof params === 'function' ? params : params.dispatch;
     const uploadFilePromise = Promise.map(
       files,
-      file => uploadFile(dispatch, url, identificator, file, data),
+      file => uploadFile(dispatch, url, identificator, file, data, headers),
       { concurrency }
     );
 

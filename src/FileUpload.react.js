@@ -18,6 +18,7 @@ export default class FileUpload extends Component {
     allowedFileTypes:     RPT.array,
     children:             RPT.element,
     className:            RPT.string,
+    headers:              RPT.object,
     data:                 RPT.object,
     addUploadingDocs:     RPT.func.isRequired,
     addUploadingImages:   RPT.func.isRequired,
@@ -80,6 +81,7 @@ export default class FileUpload extends Component {
       addUploadingDocs,
       addUploadingImages,
       allowedFileTypes,
+      headers,
       data,
       dropzoneId,
       identifier,
@@ -99,11 +101,11 @@ export default class FileUpload extends Component {
 
     if (!!imageFiles.length) {
       addUploadingImages(id, imageFiles);
-      uploadFiles(id, url, imageFiles, 'image', data);
+      uploadFiles(id, url, imageFiles, 'image', data, headers);
     }
     if (!!docFiles.length) {
       addUploadingDocs(id, docFiles);
-      uploadFiles(id, url, docFiles, 'document', data);
+      uploadFiles(id, url, docFiles, 'document', data, headers);
     }
   }
 
